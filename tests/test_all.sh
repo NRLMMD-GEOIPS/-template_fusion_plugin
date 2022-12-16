@@ -1,8 +1,8 @@
 # # # Distribution Statement A. Approved for public release. Distribution unlimited.
-# # # 
+# # #
 # # # Author:
 # # # Naval Research Laboratory, Marine Meteorology Division
-# # # 
+# # #
 # # # This program is free software: you can redistribute it and/or modify it under
 # # # the terms of the NRLMMD License included with this program. This program is
 # # # distributed WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -33,8 +33,7 @@ echo ""
 # "call" used in test_all_run.sh
 for call in \
 \
-            "$GEOIPS_PACKAGES_DIR/@package@/tests/scripts/test_config.sh" \
-            "$GEOIPS_PACKAGES_DIR/@package@/tests/scripts/@mydatatype@.tc.@product@.imagery_clean.sh"
+            "$GEOIPS_PACKAGES_DIR/@package@/tests/scripts/@my_layered_test_script@.sh"
 do
     . $GEOIPS/tests/utils/test_all_run.sh
 done
