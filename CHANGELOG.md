@@ -1,8 +1,8 @@
     # # # Distribution Statement A. Approved for public release. Distribution unlimited.
-    # # # 
+    # # #
     # # # Author:
     # # # Naval Research Laboratory, Marine Meteorology Division
-    # # # 
+    # # #
     # # # This program is free software: you can redistribute it and/or modify it under
     # # # the terms of the NRLMMD License included with this program. This program is
     # # # distributed WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -23,18 +23,14 @@
 
 ### Major New Functionality
 * **Top Level Administrivia**
-    * **README.md**: standard README with repo cloning, optionall geoips installation, and testing
+    * **README.md**: standard README with repo cloning, optional geoips installation, and testing
     * **CHANGELOG.md**: Initial CHANGELOG contents.
     * **VERSION**: Required VERSION file
     * **setup.py**: pip setup.py with package dependencies and entry points.
 * **Testing**
     * **tests/test_all.sh**: Complete test script for full package integration tests
-    * **@tests/scripts/@mydatatype@.tc.@product@.imagery_clean.sh@**: @Direct single source test call.@
-    * **tests/scripts/test_config.sh**: Complete functionality integration test.
-    * **tests/scripts/test_config.yaml**: YAML output config to product all available products and sectors
-        * @product1 description@
-        * @product2 description@
-* **Package modules**
-    * **@package@/interface_modules/readers/@my_reader@**: @Info on reader
+    * **@tests/scripts/@my_test_script.sh@**: @Direct single source test call.@
+* **Package plugins**
     * **@package@/interface_modules/@module_type@/@my_module@**: @Info on module
-    * **@include all new modules, with descriptions@**
+    * **@package@/yaml_configs/@config_type@/@my_config@**: @Info on YAML config
+    * **@include all new modules and YAML configs, with descriptions@**
