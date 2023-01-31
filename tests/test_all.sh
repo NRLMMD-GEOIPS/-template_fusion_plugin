@@ -33,6 +33,7 @@ echo ""
 # "call" used in test_all_run.sh
 for call in \
 \
+            "$GEOIPS_PACKAGES_DIR/geoips/tests/utils/check_code.sh all `dirname $0`/../" \
             "$GEOIPS_PACKAGES_DIR/@package@/tests/scripts/@my_layered_test_script@.sh"
 do
     . $GEOIPS/tests/utils/test_all_run.sh
