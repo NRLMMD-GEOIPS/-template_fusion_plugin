@@ -27,18 +27,57 @@
 #   Please see various YAML files in data_fusion/yaml_configs/product_params/Layered-*.yaml for a variety of
 #   options for setting mpl_colors_info values specifically for adjusting colorbar locations/positioning
 
-layered:
-  @My-Layered-Product@:
-    product_template: "Layered"
-    coverage_dataset: @fuse_dataset_name_N@
-    covg_func: masked_arrays
-    covg_args:
-      alt_varname_for_covg: @variable_from_dataset_name_N@
-    mpl_colors_info: # These use "dataset_id" as specified in command line call as keys,
-                     # and override defaults found in the product's colormap specification
-      @fuse_dataset_name_1@:
-        colorbar: False
-      @fuse_dataset_name_2@:
-        colorbar: True
-      @fuse_dataset_name_3@:
-        colorbar: True
+interface: products
+family: list
+
+# @ This can be any unique identifier for this product list.
+name: layered
+
+# @ Include your own descriptive docstring that describes this list of products.
+docstring: |
+  The default products_source_name fusion plugin configuration.
+
+spec:
+  products:
+    # @ product name is the identifier for the current product - note it *can*
+    # @ match the name specified in "product_defaults".
+    # @ product can be defined in ANY repo!  Does not have to be this repo!
+    # @ NOTE: Please use '-' as a delimeter in product names by GeoIPS convention.
+    # @ This allows using either '_' or '.' as a delimiter in filenames,
+    # @ another GeoIPS convention.
+    # @ Capitalization of each word in Product-Name can aid in human readability,
+    # @ but is not strictly required. GeoIPS *is* case sensitive.
+    - name: Layered
+
+      # @ source_name must be a valid geoips "source_name", as found in the
+      # @ reader for this data type.  Readers can be specified in any repository,
+      # @ does not have to be specified in this repo!
+      source_name: layered
+
+      # @ Include your own descriptive docstring that describes this
+      # @ particular product.
+      docstring: |
+        Layered winds product using default 2 colorbar placement.
+
+        This example layered image includes default colorbar placement
+        for both windspeed and ir products, and no colorbar for windbarbs.
+
+      # @ product_defaults references a "product_defaults" plugin (found in any repo)
+      product_defaults: Layered-Winds-Horizontal-Adjust
+
+      spec:
+        coverage_checker:
+          plugin:
+            name: masked_arrays
+            arguments:
+              varname: windspeed
+              alt_varname: wind_speed_kts
+
+        mpl_colors_info: # These use "dataset_id" as specified in command line call as keys,
+          # and override defaults found in the product's colormap specification
+          windbarbs:
+            colorbar: False
+          windspeed:
+            colorbar: True
+          ir:
+            colorbar: True
