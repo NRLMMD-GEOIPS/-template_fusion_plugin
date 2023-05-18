@@ -1,0 +1,83 @@
+# The "layered" product_inputs file provides the specifications for the final @My-Layered-Product@ output.
+# The individual layers are specified within the command line call - this file indicates how the final image
+# should be generated.
+
+# @My-Layered-Product@ MUST match the fusion_final_product_name specified in the command line call.
+
+# coverage_dataset: @fuse_dataset_name_N@
+#    specifies which dataset (as specified in --fuse_dataset_name via command line) should be used
+#    for calculating the final coverage of the product (for determining % coverage in filenames, and to determine
+#    if the product should be produced at all).  Please choose @fuse_dataset_name_N@ from the command line call
+#    appropriately (this just depends on how you want coverage defined for your final product)
+# alt_varname_for_covg: @variable_from_dataset_name_N@
+#    the variable you want to use from @fuse_dataset_name_N@ for calculating coverage.
+# covg_func: masked_arrays
+#    indicates the appropriate coverage function to use for the given dataset (ie, defining coverage for
+#    windbarb data is different than for raster data).  covg_funcs are found in interface_modules/coverage_checks
+# Currently there is no method for including multiple datasets in the final coverage calculation. Please let the
+#    GeoIPS Team know if that is required functionality.
+
+# product_template: "Layered"
+#   indicates the base product to use in creating "@My-Layered-Product@"
+#   All fields under @My-Layered-Product@ override those in data_fusion/yaml_configs/product_params/Layered.yaml
+#  
+# mpl_colors_info:
+#   Each key within mpl_colors_info refers to a @fuse_dataset_name_N@ as defined in the test script / command line call
+#   This option allows overriding fields within the current layer's colormap specification with a specific value.
+#   Please see various YAML files in data_fusion/yaml_configs/product_params/Layered-*.yaml for a variety of
+#   options for setting mpl_colors_info values specifically for adjusting colorbar locations/positioning
+
+interface: products
+family: list
+
+# @ This can be any unique identifier for this product list.
+name: my_layered_list
+
+# @ Include your own descriptive docstring that describes this list of products.
+docstring: |
+  The default products_source_name fusion plugin configuration.
+
+spec:
+  products:
+    # @ product name is the identifier for the current product - note it *can*
+    # @ match the name specified in "product_defaults".
+    # @ product can be defined in ANY repo!  Does not have to be this repo!
+    # @ NOTE: Please use '-' as a delimeter in product names by GeoIPS convention.
+    # @ This allows using either '_' or '.' as a delimiter in filenames,
+    # @ another GeoIPS convention.
+    # @ Capitalization of each word in Product-Name can aid in human readability,
+    # @ but is not strictly required. GeoIPS *is* case sensitive.
+    - name: My-Layered-Winds
+
+      # @ source_name must be a valid geoips "source_name", as found in the
+      # @ reader for this data type.  Readers can be specified in any repository,
+      # @ does not have to be specified in this repo!
+      source_name: my_layered_source
+
+      # @ Include your own descriptive docstring that describes this
+      # @ particular product.
+      docstring: |
+        Layered winds product using default 2 colorbar placement.
+
+        This example layered image includes default colorbar placement
+        for both windspeed and ir products, and no colorbar for windbarbs.
+
+      # @ product_defaults references a "product_defaults" plugin (found in any repo)
+      product_defaults: Layered-Winds-Horizontal-Adjust
+
+      spec:
+        coverage_checker:
+          plugin:
+            name: masked_arrays
+            arguments:
+              varname: windspeed
+              alt_varname: wind_speed_kts
+
+        mpl_colors_info: # These use "dataset_id" as specified in command line call as keys,
+          # and override defaults found in the product's colormap specification
+          windbarbs:
+            colorbar: False
+          windspeed:
+            colorbar: True
+          ir:
+            colorbar: True
