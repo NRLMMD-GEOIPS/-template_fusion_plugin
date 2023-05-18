@@ -52,8 +52,8 @@ if [[ ! -f $GEOIPS_PACKAGES_DIR/geoips/tests/utils/test_all_pre.sh ]]; then
     exit 2
 fi
 
-# . $GEOIPS/tests/utils/test_all_pre.sh @package@
-. $GEOIPS/tests/utils/test_all_pre.sh my_package
+# @ Replace "my_fusion_package" with your package name
+. $GEOIPS_PACKAGES_DIR/geoips/tests/utils/test_all_pre.sh my_fusion_package
 
 # @ NOTE: Update "template_fusion_plugin" paths below to point to your package's
 # @ test scripts, ie
@@ -68,7 +68,7 @@ for call in \
             "pytest $GEOIPS_PACKAGES_DIR/geoips/tests/test_pytest" \
             "$GEOIPS_PACKAGES_DIR/template_fusion_plugin/tests/scripts/my_layered_test_script.sh"
 do
-    . $GEOIPS/tests/utils/test_all_run.sh
+    . $GEOIPS_PACKAGES_DIR/geoips/tests/utils/test_all_run.sh
 done
 
-. $GEOIPS/tests/utils/test_all_post.sh
+. $GEOIPS_PACKAGES_DIR/geoips/tests/utils/test_all_post.sh
