@@ -12,6 +12,6 @@
 
 """Init file for template_fusion_plugin/my_fusion_package."""
 
-from .version import __version__, __version_tuple__
+from ._version import __version__, __version_tuple__
 
 __all__ = ["__version__", "__version_tuple__"]

@@ -42,7 +42,7 @@ entry-points = {file = ["entry-points.ini"]}
 "version_scheme" = "post-release"  # Use current version .postN vs incrementing
 "local_scheme" = "no-local-version"  # Don't include hash, or date, just postN
 # @ Replace "my_fusion_package" with your package name, ie:
-"write_to" = "my_fusion_package/version.py"  # Write an actual file
+"write_to" = "my_fusion_package/_version.py"  # Write an actual file
 
 [project]
 # @ Replace "my_fusion_package" with your package name, ie:
