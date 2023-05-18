@@ -9,7 +9,9 @@
 # # # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the included license
 # # # for more details. If you did not receive the license, for more information see:
 # # # https://github.com/U-S-NRL-Marine-Meteorology-Division/
-"""Init file for template_fusion_plugin/my_package."""
+
+"""Init file for template_fusion_plugin/my_fusion_package."""
 
 from .version import __version__, __version_tuple__
 
+__all__ = ["__version__", "__version_tuple__"]
