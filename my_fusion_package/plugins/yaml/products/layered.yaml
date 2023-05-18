@@ -31,7 +31,7 @@ interface: products
 family: list
 
 # @ This can be any unique identifier for this product list.
-name: layered
+name: my_layered_list
 
 # @ Include your own descriptive docstring that describes this list of products.
 docstring: |
@@ -47,12 +47,12 @@ spec:
     # @ another GeoIPS convention.
     # @ Capitalization of each word in Product-Name can aid in human readability,
     # @ but is not strictly required. GeoIPS *is* case sensitive.
-    - name: Layered
+    - name: My-Layered-Winds
 
       # @ source_name must be a valid geoips "source_name", as found in the
       # @ reader for this data type.  Readers can be specified in any repository,
       # @ does not have to be specified in this repo!
-      source_name: layered
+      source_name: my_layered_source
 
       # @ Include your own descriptive docstring that describes this
       # @ particular product.
