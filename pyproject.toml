@@ -41,12 +41,12 @@ entry-points = {file = ["entry-points.ini"]}
 [tool.setuptools_scm]
 "version_scheme" = "post-release"  # Use current version .postN vs incrementing
 "local_scheme" = "no-local-version"  # Don't include hash, or date, just postN
-"write_to" = "my_package/version.py"  # Write an actual file
+# @ Replace "my_fusion_package" with your package name, ie:
+"write_to" = "my_fusion_package/version.py"  # Write an actual file
 
 [project]
-# @ Update with your package name, ie:
-# @ name = "@package@"
-name = "my_package"
+# @ Replace "my_fusion_package" with your package name, ie:
+name = "my_fusion_package"
 authors = []
 description = "@package@ GeoIPS Plugin Package"
 readme = "README.md"
@@ -59,9 +59,8 @@ classifiers = [
 dynamic = ["version"]
 
 [project.entry-points."geoips.plugin_packages"]
-# @ Update with your package name, ie:
-# @ "@package@" = "@package@"
-"my_package" = "my_package"
+# @ Replace "my_fusion_package" with your package name, ie:
+"my_fusion_package" = "my_fusion_package"
 
 # @ Add your own required entry points, based on your new functionality
 # Uncomment and update appropriately for each module you will be implementing.
