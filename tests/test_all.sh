@@ -36,7 +36,7 @@
 
 if [[ ! -d $GEOIPS_PACKAGES_DIR/geoips ]]; then
     echo "Must CLONE geoips repository into \$GEOIPS_PACKAGES_DIR location"
-    echo "to use test_all.sh testing utility."
+    echo "to use test_all.sh integration testing utility."
     echo ""
     echo "export GEOIPS_PACKAGES_DIR=<path_to_geoips_cloned_packages>"
     echo "git clone https://github.com/NRLMMD-GEOIPS/geoips $GEOIPS_PACKAGES_DIR/geoips"
@@ -44,7 +44,7 @@ if [[ ! -d $GEOIPS_PACKAGES_DIR/geoips ]]; then
     exit 1
 fi
 if [[ ! -f $GEOIPS_PACKAGES_DIR/geoips/tests/utils/test_all_pre.sh ]]; then
-    echo "geoips-based testing utility does not exist:"
+    echo "geoips-based integration testing utility does not exist:"
     echo "  $GEOIPS_PACKAGES_DIR/geoips/tests/utils/test_all_pre.sh"
     echo ""
     echo "Please ensure geoips repo is CLONED in GEOIPS_PACKAGES_DIR location"
