@@ -82,9 +82,9 @@ data_fusion_procflow \
       --procflow data_fusion \
       --trackfile_parser bdeck_parser \
       --trackfiles $GEOIPS_PACKAGES_DIR/geoips/tests/sectors/tc_bdecks/bwp142022.dat \
-      --fusion_final_product_name Layered \
-      --fusion_final_source_name layered \
-      --fusion_final_platform_name multi \
+      --fusion_final_product_name My-Layered-Winds \
+      --fusion_final_source_name my_layered_source \
+      --fusion_final_platform_name my_multi_platform \
       --fusion_final_output_format layered_imagery \
       --fuse_files $GEOIPS_TESTDATA_DIR/test_data_scat/bg_data/ahi_20220911_1330_tc2022wp14muifa/* \
           --fuse_reader_name ahi_hsd \
