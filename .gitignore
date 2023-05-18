@@ -1,4 +1,6 @@
+# GeoIPS specific
 _version.py
+*diff_test_output*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -52,8 +54,6 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
-*diff_test_output_dir*
-*diff_test_output*
 
 # Translations
 *.mo
