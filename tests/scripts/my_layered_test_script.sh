@@ -51,7 +51,7 @@
 #              repository you set up through https://github.com/NRLMMD-GEOIPS/template_test_data
 #   @datafiles_N@ is the appropriate path to the data files of @datatype_N@ within the test data repo.
 #   @fuse_reader_name_N@ is the appropriate reader associated with your @datatype_N@
-#   @fuse_product_name_N@ is the product you would like to create from @datafile_N@ 
+#   @fuse_product_name_N@ is the product you would like to create from @datafile_N@
 #   @fuse_output_format_N@ is the output format you would like to use for plotting the current layer.
 #              Note this is most likely going to be a "clean" output format (no gridlines, coastlines,
 #              titles, etc), since we want to simply layer the different images, and the annotations
@@ -63,7 +63,7 @@
 #              See geoips imagery_clean.py and imagery_windbarbs_clean.py for examples of valid output formats.
 #   @fuse_dataset_name_N@: arbitrary string that defines the name of the current dataset.
 #              Any instance of @fuse_dataset_name_N@ in the template script must match those in the
-#              template product_inputs/layered.yaml file
+#              template product/layered.yaml file
 #   --fuse_order: Integer specifying the order of the layers.
 #              Lower numbers are on the bottom, higher numbers on the top
 
@@ -77,33 +77,34 @@
 # Please create a separate test script for each piece of functionality you would like to test.
 
 data_fusion_procflow \
-      --compare_path "$GEOIPS_PACKAGES_DIR/@package@/tests/outputs/@my_layered_test_script@" \
-      --filename_format geoips_fname \
+      --compare_path "$GEOIPS_PACKAGES_DIR/template_fusion_plugin/tests/outputs/my_layered_test_script" \
+      --filename_formatter geoips_fname \
       --procflow data_fusion \
-      --sector_list global \
-      --sectorfiles $GEOIPS/tests/sectors/static/global.yaml
-      --fusion_final_product_name @My-Layered-Product@ \
-      --fusion_final_source_name layered \
-      --fusion_final_platform_name multi \
+      --trackfile_parser bdeck_parser \
+      --trackfiles $GEOIPS_PACKAGES_DIR/geoips/tests/sectors/tc_bdecks/bwp142022.dat \
+      --fusion_final_product_name My-Layered-Winds \
+      --fusion_final_source_name my_layered_source \
+      --fusion_final_platform_name my_multi_platform \
       --fusion_final_output_format layered_imagery \
-      --fuse_files $GEOIPS_TESTDATA_DIR/test_data_@datatype_1@/data/@datafiles_1@ \
-          --fuse_reader_name @fuse_reader_name_1@\
-          --fuse_product_name @fuse_product_name_1@ \
-          --fuse_output_format @fuse_output_format_1@ \
-          --fuse_dataset_name @dataset_name_1@ \
+      --fuse_files $GEOIPS_TESTDATA_DIR/test_data_scat/bg_data/ahi_20220911_1330_tc2022wp14muifa/* \
+          --fuse_reader_name ahi_hsd \
+          --fuse_product_name Infrared-Gray \
+          --fuse_output_format imagery_clean \
+          --fuse_dataset_name ir \
           --fuse_order 0 \
-      --fuse_files $GEOIPS_TESTDATA_DIR/test_data_@datatype_2@/data/@datafiles_2@ \
-          --fuse_reader_name @fuse_reader_name_2@\
-          --fuse_product_name @fuse_product_name_2@ \
-          --fuse_output_format @fuse_output_format_2@ \
-          --fuse_dataset_name @dataset_name_2@ \
+      --fuse_files $GEOIPS_TESTDATA_DIR/test_data_scat/data/20220911_metopb_byu_uhr_tc2022wp14muifa/MUIFA_20220911_51797_B_A-product.nc \
+          --fuse_reader_name ascat_uhr_netcdf  \
+          --fuse_product_name windspeed \
+          --fuse_output_format imagery_clean \
+          --fuse_dataset_name windspeed \
           --fuse_order 1 \
-      --fuse_files $GEOIPS_TESTDATA_DIR/test_data_@datatype_3@/data/@datafiles_3@ \
-          --fuse_reader_name @fuse_reader_name_3@\
-          --fuse_product_name @fuse_product_name_3@ \
-          --fuse_output_format @fuse_output_format_3@ \
-          --fuse_dataset_name @dataset_name_3@ \
+      --fuse_files $GEOIPS_TESTDATA_DIR/test_data_scat/data/20220911_metopb_knmi_tc2022wp14muifa/ascat_20220911_132700_metopb_51797_eps_o_250_3202_ovw.l2.nc \
+          --fuse_reader_name scat_knmi_winds_netcdf \
+          --fuse_product_name Windbarbs-Gray \
+          --fuse_output_format imagery_windbarbs_clean \
+          --fuse_dataset_name windbarbs \
           --fuse_order 2 \
+
 curr_retval=$?
 
 exit $((curr_retval))
