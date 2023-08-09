@@ -52,7 +52,7 @@ spec:
       # @ source_name must be a valid geoips "source_name", as found in the
       # @ reader for this data type.  Readers can be specified in any repository,
       # @ does not have to be specified in this repo!
-      source_name: my_layered_source
+      source_names: [my_layered_source]
 
       # @ Include your own descriptive docstring that describes this
       # @ particular product.

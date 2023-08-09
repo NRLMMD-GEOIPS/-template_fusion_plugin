@@ -51,7 +51,7 @@
 #              repository you set up through https://github.com/NRLMMD-GEOIPS/template_test_data
 #   @datafiles_N@ is the appropriate path to the data files of @datatype_N@ within the test data repo.
 #   @fuse_reader_name_N@ is the appropriate reader associated with your @datatype_N@
-#   @fuse_product_name_N@ is the product you would like to create from @datafile_N@ 
+#   @fuse_product_name_N@ is the product you would like to create from @datafile_N@
 #   @fuse_output_format_N@ is the output format you would like to use for plotting the current layer.
 #              Note this is most likely going to be a "clean" output format (no gridlines, coastlines,
 #              titles, etc), since we want to simply layer the different images, and the annotations

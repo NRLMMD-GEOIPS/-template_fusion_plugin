@@ -11,7 +11,7 @@
     # # # https://github.com/U-S-NRL-Marine-Meteorology-Division/
 
 
-Data Fusion GeoIPS Plugin Template 
+Data Fusion GeoIPS Plugin Template
 ============================================
 
 This template repository contains everything necessary to create a fully compatible
@@ -30,19 +30,18 @@ modifying the template files within this repo.
 GeoIPS Plugin Template" section in the README.md, leaving the appropriate
 content for your package's README file.
 
-
 @package@ GeoIPS Plugin
 ==========================
 
 The @package@ package is a GeoIPS-compatible plugin, intended to be used within
 the GeoIPS ecosystem.  Please see the
-[GeoIPS Documentation](https://github.com/NRLMMD-GEOIPS/geoips#readme) for
+[GeoIPS Documentation](https://github.com/NRLMMD-GEOIPS/geoips#readme)
 for more information on the GeoIPS plugin architecture and base infrastructure.
 
 Package Overview
 -----------------
 
-The @package@ plugin provides the capability for 
+The @package@ plugin provides the capability for
 
 @ Please include a brief description of what capability this package provides.
 
@@ -81,6 +80,7 @@ Install @package@ package
     # Ensure GeoIPS Python environment is enabled.
 
     git clone https://github.com/NRLMMD-GEOIPS/@package@ $GEOIPS_PACKAGES_DIR/@package@
+
     pip install -e $GEOIPS_PACKAGES_DIR/@package@
 ```
 

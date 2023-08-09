@@ -64,8 +64,6 @@ echo ""
 for call in \
 \
             "$GEOIPS_PACKAGES_DIR/geoips/tests/utils/check_code.sh all `dirname $0`/../" \
-            "test_interfaces" \
-            "pytest $GEOIPS_PACKAGES_DIR/geoips/tests/test_pytest" \
             "$GEOIPS_PACKAGES_DIR/template_fusion_plugin/tests/scripts/my_layered_test_script.sh"
 do
     . $GEOIPS_PACKAGES_DIR/geoips/tests/utils/test_all_run.sh
