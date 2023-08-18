@@ -77,4 +77,3 @@ Include:
 
     new file: tests/test_all.sh
     new file: @tests/scripts/@my_layered_test_script.sh@
-
