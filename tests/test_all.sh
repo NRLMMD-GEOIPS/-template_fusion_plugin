@@ -22,9 +22,9 @@
 #!/bin/bash
 
 # This should contain test calls to cover ALL required functionality tests
-# for the @package@ repo.
+# for this repo.
 
-# The $GEOIPS tests modules sourced within this script handle:
+# The $GEOIPS_PACKAGES_DIR/geoips tests modules sourced within this script handle:
    # setting up the appropriate associative arrays for tracking the overall
    #   return value,
    # calling the test scripts appropriately, and
@@ -43,17 +43,13 @@ if [[ ! -d $GEOIPS_PACKAGES_DIR/geoips ]]; then
     echo ""
     exit 1
 fi
-if [[ ! -f $GEOIPS_PACKAGES_DIR/geoips/tests/utils/test_all_pre.sh ]]; then
-    echo "geoips-based integration testing utility does not exist:"
-    echo "  $GEOIPS_PACKAGES_DIR/geoips/tests/utils/test_all_pre.sh"
-    echo ""
-    echo "Please ensure geoips repo is CLONED in GEOIPS_PACKAGES_DIR location"
-    echo "and up to date."
-    exit 2
-fi
 
-# @ Replace "my_fusion_package" with your package name
-. $GEOIPS_PACKAGES_DIR/geoips/tests/utils/test_all_pre.sh my_fusion_package
+repopath=`dirname $0`/../
+
+# @ Set the name of your package, for use in build_docs.sh and test_all_pre.sh, ie:
+# pkgname=@package@
+pkgname=my_fusion_package
+. $GEOIPS_PACKAGES_DIR/geoips/tests/utils/test_all_pre.sh $pkgname
 
 # @ NOTE: Update "template_fusion_plugin" paths below to point to your package's
 # @ test scripts, ie
@@ -63,10 +59,11 @@ echo ""
 # "call" used in test_all_run.sh
 for call in \
 \
-            "$GEOIPS_PACKAGES_DIR/geoips/tests/utils/check_code.sh all `dirname $0`/../" \
-            "$GEOIPS_PACKAGES_DIR/template_fusion_plugin/tests/scripts/my_layered_test_script.sh"
+  "$GEOIPS_PACKAGES_DIR/geoips/tests/utils/check_code.sh all $repopath" \
+  "$GEOIPS_PACKAGES_DIR/geoips/docs/build_docs.sh $repopath $pkgname html_only" \
+  "$GEOIPS_PACKAGES_DIR/template_fusion_plugin/tests/scripts/my_layered_test_script.sh"
 do
-    . $GEOIPS_PACKAGES_DIR/geoips/tests/utils/test_all_run.sh
+  . $GEOIPS_PACKAGES_DIR/geoips/tests/utils/test_all_run.sh
 done
 
 . $GEOIPS_PACKAGES_DIR/geoips/tests/utils/test_all_post.sh
